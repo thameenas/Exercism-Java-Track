@@ -1,45 +1,29 @@
-import java.util.HashMap;
+
 class TwelveDays {
-    HashMap<Integer, String> days = new HashMap<>();;
-    HashMap<Integer, String> verses = new HashMap<>();;
-    TwelveDays(){
-        days.put(1, "first");
-		verses.put(1, " a Partridge in a Pear Tree.");
-		days.put(2, "second");
-		verses.put(2, " two Turtle Doves, and");
-		days.put(3, "third");
-		verses.put(3, " three French Hens,");
-		days.put(4, "fourth");
-		verses.put(4, " four Calling Birds,");
-		days.put(5, "fifth");
-		verses.put(5, " five Gold Rings,");
-		days.put(6, "sixth");
-		verses.put(6, " six Geese-a-Laying,");
-		days.put(7, "seventh");
-		verses.put(7, " seven Swans-a-Swimming,");
-		days.put(8, "eighth");
-		verses.put(8, " eight Maids-a-Milking,");
-		days.put(9, "ninth");
-		verses.put(9, " nine Ladies Dancing,");
-		days.put(10, "tenth");
-		verses.put(10, " ten Lords-a-Leaping,");
-		days.put(11, "eleventh");
-		verses.put(11, " eleven Pipers Piping,");
-		days.put(12, "twelfth");
-		verses.put(12, " twelve Drummers Drumming,");
-    }
+    String[] days={"first","second","third","fourth","fifth","sixth","seventh","eighth","ninth","tenth","eleventh","twelfth"};
+    String[] gifts={"a Partridge in a Pear Tree",
+            "two Turtle Doves, ",
+            "three French Hens, ",
+            "four Calling Birds, ",
+            "five Gold Rings, ",
+            "six Geese-a-Laying, ",
+            "seven Swans-a-Swimming, ",
+            "eight Maids-a-Milking, ",
+            "nine Ladies Dancing, ",
+            "ten Lords-a-Leaping, ",
+            "eleven Pipers Piping, ",
+            "twelve Drummers Drumming, "
+    };   
 
 
     String verse(int verseNumber) {
         StringBuilder song=new StringBuilder("");
-        song.append("On the "+ days.get(verseNumber)+" day of Christmas my true love gave to me:");
-        while(verseNumber>0){
-            song.append(verses.get(verseNumber));
-            verseNumber--;
+        for(int i=verseNumber-1;i>=0;i--){
+            if(i==0 && verseNumber>1)
+                song.append("and ");
+            song.append(gifts[i]);
         }
-        song.append("\n");
-        return song.toString();
-        
+        return String.format("On the %s day of Christmas my true love gave to me: %s.\n",days[verseNumber-1],song.toString());
     }
 
     String verses(int startVerse, int endVerse) {
